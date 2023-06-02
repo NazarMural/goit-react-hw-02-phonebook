@@ -3,7 +3,7 @@ import { nanoid } from 'nanoid';
 import Section from 'components/Section/Section';
 import Contacts from 'components/Contacts/Contacts';
 import PhoneBookForm from 'components/PhoneBookForm/PhoneBookForm';
-import Filter from 'components/Filter/Filter';
+import { Container } from './App.styled';
 
 class App extends Component {
   state = {
@@ -44,25 +44,20 @@ class App extends Component {
     const { contacts, filter } = this.state;
 
     return (
-      <div>
+      <Container>
         <Section title="Phonebook">
           <PhoneBookForm handleAddContacts={this.handleAddContacts} />
         </Section>
 
         <Section title="Contacts">
-          <Filter
-            handleChange={this.handleChange}
-            filter={filter}
-            contacts={contacts}
-            deleteContact={this.deleteContact}
-          />
           <Contacts
             contacts={contacts}
             filter={filter}
+            handleChange={this.handleChange}
             deleteContact={this.deleteContact}
           />
         </Section>
-      </div>
+      </Container>
     );
   }
 }

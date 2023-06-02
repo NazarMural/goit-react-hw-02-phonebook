@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { Button, ButtonBox, Form, Input, Label } from './PhoneBookForm.styled';
 
 class PhoneBookForm extends Component {
   state = {
@@ -24,10 +26,10 @@ class PhoneBookForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
+      <Form onSubmit={this.handleSubmit}>
+        <Label>
           Name
-          <input
+          <Input
             type="text"
             name="name"
             value={this.state.name}
@@ -36,12 +38,10 @@ class PhoneBookForm extends Component {
             required
             onChange={this.handleChange}
           />
-        </label>
-        <br />
-        <br />
-        <label>
+        </Label>
+        <Label>
           Number
-          <input
+          <Input
             type="tel"
             name="number"
             value={this.state.number}
@@ -50,13 +50,17 @@ class PhoneBookForm extends Component {
             required
             onChange={this.handleChange}
           />
-        </label>
-        <br />
-        <br />
-        <button type="submit">Add contact</button>
-      </form>
+        </Label>
+        <ButtonBox>
+          <Button type="submit">Add contact</Button>
+        </ButtonBox>
+      </Form>
     );
   }
 }
 
 export default PhoneBookForm;
+
+PhoneBookForm.propTypes = {
+  handleAddContacts: PropTypes.func.isRequired,
+};
